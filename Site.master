@@ -1,0 +1,131 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/default.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            height: 46px;
+        }
+        .style3
+        {
+            height: 46px;
+            width: 183px;
+        }
+        .style4
+        {
+            width: 766px;
+        }
+    </style>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div>
+        <table style="height: 82px; width: 100%" bgcolor="#3B5998">
+            <tr>
+                <td id="Td1" runat="server" align="left" style="font-size: 45px; font-weight: bold; color: #FFFFFF;"
+                    nowrap="nowrap" class="style4">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    WEBLINK</td>
+                <td id="Td2" class="style3" runat="server" align="left" style="font-size: 45px; font-weight: bold;
+                    color: #FFFFFF;" nowrap="nowrap">
+                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Size="X-Large" NavigateUrl="~/Default.aspx"
+                        Font-Bold="False" ForeColor="White">Home</asp:HyperLink>
+                </td>
+                <td id="Td3" class="style1" runat="server" align="left" style="font-size: 45px; font-weight: bold;
+                    color: #FFFFFF;" nowrap="nowrap">
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" Font-Size="X-Large" LogoutPageUrl="~/LoggedOut.aspx"
+                        LogoutAction="Redirect" Font-Bold="False" ForeColor="White" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <br />
+    <div id="Div1" class="main" style="height: auto; margin-left: 3em; width: auto;"
+        runat="server">
+        <div style="float: left; width: auto; height: 100%;">
+            <asp:LoginView ID="LoginView1" runat="server">
+                <AnonymousTemplate>
+                </AnonymousTemplate>
+                <LoggedInTemplate>
+                    <div>
+                        <asp:Label ID="Label1" runat="server" Font-Size="Large" ForeColor="Black" Text="My Weblink"
+                            Font-Bold="True"></asp:Label>
+                        <br />
+                        <asp:HyperLink ID="HyperLinkb" runat="server" NavigateUrl="~/MemberWelcome.aspx">Welcome Page</asp:HyperLink><br />
+                        <asp:HyperLink ID="HyperLinkc" runat="server" NavigateUrl="~/Mortgage.aspx">Mortgage Calculator</asp:HyperLink><br />
+                        <asp:HyperLink ID="HyperLinkd" runat="server" NavigateUrl="~/InterestPages/InterestSelection.aspx">Select Interest</asp:HyperLink><br />
+                        <asp:HyperLink ID="HyperLinke" runat="server" NavigateUrl="~/InterestPages/InterestEdit.aspx">Edit Interests</asp:HyperLink><br />
+                        <asp:HyperLink ID="HyperLinkf" runat="server" NavigateUrl="~/InterestPages/SelectInterestPost.aspx">Post Item</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLinkh" runat="server" NavigateUrl="~/Friends/GetMessages.aspx">My Message Inbox</asp:HyperLink><br />
+                        <asp:HyperLink ID="HyperLinki" runat="server" NavigateUrl="~/Friends/SendMessages.aspx">Send a message</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLinki0" runat="server" NavigateUrl="~/Friends/GetSentMessages.aspx">Sent Messages</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="HyperLinkj" runat="server" NavigateUrl="~/BillingPage.aspx">Billing</asp:HyperLink>
+                        <br />
+                        <br />
+                    </div>
+                    <div>
+                        <asp:Label ID="Label2" runat="server" Font-Size="Large" ForeColor="Black" Text="Account"
+                            Font-Bold="True"></asp:Label>
+                        <br />
+                        <asp:HyperLink ID="myProfileLink" runat="server" NavigateUrl="~/Account/PublicProfile.aspx">My Profile</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="changeProfile" runat="server" NavigateUrl="~/Account/MemberProfile.aspx">Change Profile</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="changePasswordLink" runat="server" NavigateUrl="~/Account/ChangePassword.aspx">Change Password</asp:HyperLink>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="Black"
+                            Text="Friends"></asp:Label>
+                        <br />
+                        <asp:HyperLink ID="friendList" runat="server" NavigateUrl="~/Friends/FriendList.aspx">Friend List</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="addFriend" runat="server" NavigateUrl="~/Friends/AddFriend.aspx">Add friend</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="invitesReceived" runat="server" NavigateUrl="~/Friends/FriendInvitesReceived.aspx">Invites Received</asp:HyperLink>
+                        <br />
+                        <asp:HyperLink ID="invitesSent" runat="server" NavigateUrl="~/Friends/FriendInvitesSent.aspx">Invites Sent</asp:HyperLink>
+                        <br />
+                        <br />
+                    </div>
+                    <div>
+                        <asp:Label ID="adminLabel" runat="server" Font-Size="Large" ForeColor="Black" Text="Administrator"
+                            Font-Bold="True" Visible="False"></asp:Label>
+                        <br />
+                        <asp:HyperLink ID="adminLink" runat="server" NavigateUrl="~/AdminPages/SelectCategory.aspx"
+                            Visible="False">Modify Categories <br /> and Interests</asp:HyperLink>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </LoggedInTemplate>
+            </asp:LoginView>
+        </div>
+        <div style="margin-left: 12em; width: inherit">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <br />
+        </div>
+    </div>
+    <!--
+    <div id="copyright" class="container">
+        <p>
+            Copyright (c) 2013 Sitename.com. All rights reserved. | Photos by <a href="http://fotogrph.com/">
+                Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+        <div>
+        </div>
+    </div>-->
+    </form>
+</body>
