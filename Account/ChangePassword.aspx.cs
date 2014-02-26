@@ -51,7 +51,11 @@ public partial class ChangePassword : System.Web.UI.Page
 
         if (Page.IsValid)
         {
-            myProfile.Password = newPassBox.Text;
+            string salt = Security.CreateSalt(16);
+            string password = Security.CreatePasswordHash(newPassBox.Text, salt);
+
+            myProfile.Password = password;
+            myProfile.Salt = salt;
 
             if(logged_in)
             {

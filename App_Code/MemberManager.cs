@@ -35,13 +35,14 @@ public class MemberManager
         conn.Open();
 
         string SQLstr = "INSERT INTO MemberProfiles" +
-            "(Username,VisibleUsername,Password,FirstName,MiddleInitial,LastName,Address,City,Region,PostalCode,"+
+            "(Username,VisibleUsername,Password,Salt,FirstName,MiddleInitial,LastName,Address,City,Region,PostalCode,"+
             "Country,HomePhone,WorkPhone,CellPhone,Email,Gender,DateOfBirth,JoinDate,ReceiveSpam,IsAdmin,MembershipLevel)"+
             "VALUES (";
 
         SQLstr += "'" + newProfile.UserName + "',";
         SQLstr += "'" + newProfile.VisibleUserName + "',";
         SQLstr += "'" + newProfile.Password + "',";
+        SQLstr += "'" + newProfile.Salt + "',";
         SQLstr += "'" + newProfile.FirstName + "',";
         SQLstr += "'" + newProfile.MiddleInitial + "',";
         SQLstr += "'" + newProfile.LastName + "',";
@@ -240,25 +241,26 @@ public class MemberManager
             retProfile.SetUserName(myReader.GetString(1));
             retProfile.SetVisibleUserName(myReader.GetString(2));
             retProfile.Password = myReader.GetString(3);
-            retProfile.FirstName = myReader.GetString(4);
-            retProfile.MiddleInitial = myReader.GetString(5);
-            retProfile.LastName = myReader.GetString(6);
-            retProfile.Address = myReader.GetString(7);
-            retProfile.City = myReader.GetString(8);
-            retProfile.Region = myReader.GetString(9);
-            retProfile.PostalCode = myReader.GetString(10);
-            retProfile.Country = myReader.GetString(11);
-            
-            retProfile.HomePhone = myReader.GetString(12);
-            retProfile.WorkPhone = myReader.GetString(13);
-            retProfile.CellPhone = myReader.GetString(14);
-            retProfile.Email = myReader.GetString(15);
-            retProfile.Gender = (GenderType)myReader.GetInt32(16);
-            retProfile.DateOfBirth = (DateTime)myReader[17];
-            retProfile.SetJoinDate((DateTime)myReader[18]);
-            retProfile.ReceiveSpam = myReader.GetBoolean(19);
-            retProfile.IsAdmin = myReader.GetBoolean(20); 
-            retProfile.MembershipLevel = (MembershipType)myReader.GetInt32(21);
+            retProfile.Salt = myReader.GetString(4);
+            retProfile.FirstName = myReader.GetString(5);
+            retProfile.MiddleInitial = myReader.GetString(6);
+            retProfile.LastName = myReader.GetString(7);
+            retProfile.Address = myReader.GetString(8);
+            retProfile.City = myReader.GetString(9);
+            retProfile.Region = myReader.GetString(10);
+            retProfile.PostalCode = myReader.GetString(11);
+            retProfile.Country = myReader.GetString(12);
+
+            retProfile.HomePhone = myReader.GetString(13);
+            retProfile.WorkPhone = myReader.GetString(14);
+            retProfile.CellPhone = myReader.GetString(15);
+            retProfile.Email = myReader.GetString(16);
+            retProfile.Gender = (GenderType)myReader.GetInt32(17);
+            retProfile.DateOfBirth = (DateTime)myReader[18];
+            retProfile.SetJoinDate((DateTime)myReader[19]);
+            retProfile.ReceiveSpam = myReader.GetBoolean(20);
+            retProfile.IsAdmin = myReader.GetBoolean(21);
+            retProfile.MembershipLevel = (MembershipType)myReader.GetInt32(22);
             retProfile.OtherMemberships = null; // GetOtherNetworks(retProfile.MemberID);
         }
 
@@ -293,25 +295,26 @@ public class MemberManager
             retProfile.SetUserName(myReader.GetString(1));
             retProfile.SetVisibleUserName(myReader.GetString(2));
             retProfile.Password = myReader.GetString(3);
-            retProfile.FirstName = myReader.GetString(4);
-            retProfile.MiddleInitial = myReader.GetString(5);
-            retProfile.LastName = myReader.GetString(6);
-            retProfile.Address = myReader.GetString(7);
-            retProfile.City = myReader.GetString(8);
-            retProfile.Region = myReader.GetString(9);
-            retProfile.PostalCode = myReader.GetString(10);
-            retProfile.Country = myReader.GetString(11);
+            retProfile.Salt = myReader.GetString(4);
+            retProfile.FirstName = myReader.GetString(5);
+            retProfile.MiddleInitial = myReader.GetString(6);
+            retProfile.LastName = myReader.GetString(7);
+            retProfile.Address = myReader.GetString(8);
+            retProfile.City = myReader.GetString(9);
+            retProfile.Region = myReader.GetString(10);
+            retProfile.PostalCode = myReader.GetString(11);
+            retProfile.Country = myReader.GetString(12);
 
-            retProfile.HomePhone = myReader.GetString(12);
-            retProfile.WorkPhone = myReader.GetString(13);
-            retProfile.CellPhone = myReader.GetString(14);
-            retProfile.Email = myReader.GetString(15);
-            retProfile.Gender = (GenderType)myReader.GetInt32(16);
-            retProfile.DateOfBirth = (DateTime)myReader[17];
-            retProfile.SetJoinDate((DateTime)myReader[18]);
-            retProfile.ReceiveSpam = myReader.GetBoolean(19);
-            retProfile.IsAdmin = myReader.GetBoolean(20);
-            retProfile.MembershipLevel = (MembershipType)myReader.GetInt32(21);
+            retProfile.HomePhone = myReader.GetString(13);
+            retProfile.WorkPhone = myReader.GetString(14);
+            retProfile.CellPhone = myReader.GetString(15);
+            retProfile.Email = myReader.GetString(16);
+            retProfile.Gender = (GenderType)myReader.GetInt32(17);
+            retProfile.DateOfBirth = (DateTime)myReader[18];
+            retProfile.SetJoinDate((DateTime)myReader[19]);
+            retProfile.ReceiveSpam = myReader.GetBoolean(20);
+            retProfile.IsAdmin = myReader.GetBoolean(21);
+            retProfile.MembershipLevel = (MembershipType)myReader.GetInt32(22);
             retProfile.OtherMemberships = null; // GetOtherNetworks(retProfile.MemberID);
         }
 
@@ -375,6 +378,7 @@ public class MemberManager
 
         string SQLstr = "UPDATE MemberProfiles SET";
         SQLstr += " Password=" + "'" + updated.Password + "'";
+        SQLstr += " , Salt=" + "'" + updated.Salt + "'";
         SQLstr += " WHERE Username = '" + userName + "'";
 
         SqlCommand myCmd = new SqlCommand(SQLstr, conn);

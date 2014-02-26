@@ -29,6 +29,7 @@ public class Profile
     private string userName;
     private string visibleUserName;
     private string password;
+    private string salt;
     private string lastName;
     private string firstName;
     private string middleInitial;
@@ -53,6 +54,7 @@ public class Profile
     public string UserName { get { return userName; } }    //(Read Only) This is the username, all lowercase.
     public string VisibleUserName { get { return visibleUserName; } } //(Read only) This is the username as was entered in in the data field
     public string Password { get { return password; } set { password = value; } }
+    public string Salt { get { return salt; } set { salt = value; } }
     public string LastName{ get { return lastName; } set { lastName = value; } }
     public string FirstName{ get { return firstName; } set { firstName = value; } }
     public string MiddleInitial{ get { return middleInitial; } set { middleInitial = value; } }
